@@ -11,6 +11,9 @@ inputs:
   build-folder:
     description: The build deployable files
     required: true
+outputs:
+  url:
+    description: URL Website
 runs:
   using: "node16"
   main: main.js
