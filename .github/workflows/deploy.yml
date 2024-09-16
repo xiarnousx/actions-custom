@@ -74,3 +74,15 @@ jobs:
       - name: URL
         run: |
           echo ${{steps.deploy.outputs.url}}
+      - name: Deploy site Docker
+        id: deploy-docker
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        uses: ./.github/actions/docker
+        with:
+          bucket: "seek.docker"
+          build-folder: ./dist
+      - name: URL
+        run: |
+          echo ${{steps.deploy-docker.outputs.url}}

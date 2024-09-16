@@ -1,0 +1,20 @@
+name: Custom PY Docker
+description: Deploy Using Docker
+inputs:
+  bucket:
+    description: "S3 bucket name"
+    required: true
+  bucket-region:
+    description: S3 bucket region
+    required: false
+    default: us-east-1
+  build-folder:
+    description: The build deployable files
+    required: true
+outputs:
+  url:
+    description: URL Website
+
+runs:
+  using: "docker"
+  image: "Dockerfile" # or image repository
